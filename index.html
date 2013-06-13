@@ -19,6 +19,28 @@
 	<link rel="stylesheet" href="extensions/scale/deck.scale.css">
         <style type="text/css">
             .hidden { display: none }
+            #ActiveXInfoBar {
+                position: absolute; left: 0px; top: 0px; width: 100%;
+                font-size: 12pt;
+                height: 30px;
+                background-color: rgb(255, 255, 225);
+                border-bottom: 2px solid black;
+                overflow: hidden;
+            }
+            #lightbox {
+                width: 100%;
+                position: absolute;
+                height: 100%;
+                background-color: rgba(0,0,0,0.8);
+            }
+            #lightbox img {
+                position: absolute;
+                top:0;
+                bottom: 0;
+                left:0;
+                right:0;
+                margin:auto;
+            }
         </style>
 
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
@@ -90,13 +112,42 @@
 <section class="slide" id="ActiveX">
     <h2>The Classics</h2>
     <h3>ActiveX</h3>
-    ~1996
+    <p>1996</p>
+    <div class="slide" id="ActiveXInfoBar">
+        This website wants to run the following add-on:
+        'Indy.js ActiveX control' from 'Jacob Krall'.
+        If you trust the website and the add-on and want to allow it to run, click here...
+    </div>
+    <div class="slide" id="lightbox">
+        <img src="security.png" width="459" height="235" />
+    </div>
+</section>
+
+<section class="slide" id="ActiveXReal">
+    <h2>The Classics</h2>
+    <h3>ActiveX</h3>
+    <p>1996</p>
+    <ul>
+        <li class="slide">IE3.0 (August 1996)</li>
+        <li class="slide"><code>&lt;OBJECT&gt;</code> automatically installs the control</li>
+        <li class="slide">OLE in the browser (what could possibly go wrong?)</li>
+        <li class="slide">No sandboxing. Are you sure?</li>
+        <li class="slide">Are you sure??</li>
+    </ul>
 </section>
 
 <section class="slide" id="Flash">
     <h2>The Classics</h2>
     <h3>Flash</h3>
-    ~1996
+    <p>Added to browsers around 1996</p>
+    <ul>
+        <li class="slide">ActionScript ("ECMAScript with Classes") in Flash 5</li>
+        <li class="slide">Animations</li>
+        <li class="slide">Sound boards</li>
+        <li class="slide">Flash games</li>
+        <li class="slide">YouTube &amp; streaming video (.FLV)</li>
+        <li class="slide">Saffron Type System<li>
+    </ul>
 </section>
 
 <section class="slide" id="Silverlight">
@@ -135,6 +186,7 @@
 
 <section class="slide" id="Transpilers">
     <h2 class="slideTitle">Transpilers</h2>
+    <span><a href="http://altjs.org/">altJS</a> "Web coding without JavaScript."</span>
 </section>
 
 <section class="slide" id="Fin">
