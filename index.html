@@ -195,7 +195,10 @@
                 });
                 $("#overview").append(toc);
 
-		$.deck('.slide');
+                var options = {
+                    countNested: false
+                };
+		$.deck('.slide', options);
 	});
 </script>
 </body>
