@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="extensions/status/deck.status.css">
 	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
 	<link rel="stylesheet" href="extensions/scale/deck.scale.css">
+        <style type="text/css">
+            .hidden { display: none }
+        </style>
 
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
 	<link rel="stylesheet" href="themes/style/web-2.0.css">
@@ -31,19 +34,69 @@
 
 <!-- Begin slides. Just make elements with a class of slide. -->
 
-<section class="slide">
+<main class="slide" id="title">
+    <div class="vcenter"><h2>
+        <h2>JavaScript-Like Languages</h2>
+        <h3><a href="http://jacob.jkrall.net">Jacob Krall</a></h3>
+        <h3><a href="https://twitter.com/InPermutation">@InPermutation</a></h3>
+        <h3><a href="https://github.com/krallja">krallja</a> on GitHub</h3>
+    </div>
+</main>
+
+<nav class="slide" id="overview">
     <h2>Overview</h2>
-    <ol>
-        <li>The Classics (Java applet, ActiveX, Flash)</li>
-        <li>CoffeeScript</li>
-        <li>Dart</li>
-        <li>TypeScript</li>
-        <li>Objective-J</li>
-        <li>Caja</li>
-        <li>Haxe</li>
-        <li>asm.js</li>
-        <li>Transpilers</li>
-    </ol>
+</nav>
+
+<section class="slide" id="JavaScript">
+    <h2 class="slideTitle">JavaScript</h2>
+</section>
+
+<section class="slide" id="Java">
+    <mark class="hidden slideTitle">The Classics (Java, ActiveX, Flash)</mark>
+    <h2>The Classics</h2>
+    <h3>Java applets</h3>
+</section>
+
+<section class="slide" id="ActiveX">
+    <h2>The Classics</h2>
+    <h3>ActiveX</h3>
+</section>
+
+<section class="slide" id="Flash">
+    <h2>The Classics</h2>
+    <h3>Flash</h3>
+</section>
+
+<section class="slide" id="CoffeeScript">
+    <h2 class="slideTitle">CoffeeScript</h2>
+</section>
+
+<section class="slide" id="Dart">
+    <h2 class="slideTitle">Dart</h2>
+</section>
+
+<section class="slide" id="TypeScript">
+    <h2 class="slideTitle">TypeScript</h2>
+</section>
+
+<section class="slide" id="Objective-J">
+    <h2 class="slideTitle">Objective-J</h2>
+</section>
+
+<section class="slide" id="Haxe">
+    <h2 class="slideTitle">Haxe</h2>
+</section>
+
+<section class="slide" id="Caja">
+    <h2 class="slideTitle">Caja</h2>
+</section>
+
+<section class="slide" id="asm.js">
+    <h2 class="slideTitle">asm.js</h2>
+</section>
+
+<section class="slide" id="Transpilers">
+    <h2 class="slideTitle">Transpilers</h2>
 </section>
 
 <!-- End slides. -->
@@ -92,6 +145,14 @@
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
 	$(function() {
+                var toc = $("<ul>");
+                $('.slide').has('.slideTitle').each(function() {
+                    var li = $("<li>")
+                        .text($('.slideTitle', this).text());
+                    toc.append(li);
+                });
+                $("#overview").append(toc);
+
 		$.deck('.slide');
 	});
 </script>
