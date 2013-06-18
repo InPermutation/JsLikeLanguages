@@ -41,6 +41,21 @@
                 right:0;
                 margin:auto;
             }
+            #summaryMatrix table {
+                margin: 20px;
+            }
+            #summaryMatrix th {
+                padding: 0 5px;
+                background-color: #999;
+            }
+            * #summaryMatrix td {
+                background-color: #eee;
+            }
+            #summaryMatrix th, #summaryMatrix td {
+                text-align: center;
+                border: 1px solid grey;
+                padding: 10px;
+            }
         </style>
 
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
@@ -71,6 +86,8 @@
 
 <section class="slide" id="JavaScript">
     <h2 class="slideTitle">JavaScript</h2>
+    <div class="hidden" data-name="JavaScript" data-createyear="1995" data-vm="&#x2713;">
+    </div>
     <ul>
         <li class="slide">Netscape codename <em>Mocha</em></li>
         <li class="slide"><em>LiveScript</em> (September 1995)</li>
@@ -91,6 +108,7 @@
 
 <section class="slide" id="Java">
     <mark class="hidden slideTitle">The Classics (Java, ActiveX, Flash)</mark>
+    <div class="hidden" data-name="Java" data-createyear="1995" data-plugin="&#x2713;"></div>
     <h2>The Classics</h2>
     <h3>Java applets</h3>
     <ul>
@@ -113,6 +131,7 @@
 </section>
 
 <section class="slide" id="ActiveX">
+    <div class="hidden" data-name="ActiveX" data-createyear="1996" data-vm="&#x2713;"></div>
     <h2>The Classics</h2>
     <h3>Microsoft ActiveX</h3>
     <p>1996</p>
@@ -140,6 +159,7 @@
 </section>
 
 <section class="slide" id="Flash">
+    <div class="hidden" data-name="Flash" data-createyear="1996" data-plugin="&#x2713;" data-superset="&#x2713;"></div>
     <h2>The Classics</h2>
     <h3>Adobe Flash</h3>
     <ul>
@@ -155,6 +175,8 @@
 </section>
 
 <section class="slide" id="Silverlight">
+    <div class="hidden" data-name="Silverlight" data-createyear="2007" data-plugin="&#x2713;">
+    </div>
     <h2>The "Classics" ???</h2>
     <h3>Microsoft Silverlight</h3>
     <ul>
@@ -171,6 +193,7 @@
 </section>
 
 <section class="slide" id="CoffeeScript">
+    <div class="hidden" data-name="CoffeeScript" data-createyear="2009" data-transpiled="&#x2713;"></div>
     <h2 class="slideTitle">CoffeeScript</h2>
     <ul>
         <li class="slide"><em>"It's just JavaScript"</em></li>
@@ -189,6 +212,7 @@
 </section>
 
 <section class="slide" id="Dart-tease">
+    <div class="hidden" data-name="Dart" data-createyear="2011" data-vm="&#x2713;" data-transpiled="&#x2713;"></div>
     <h2 class="slideTitle">Dart</h2>
     <blockquote cite="http://www.youtube.com/watch?v=taaEzHI9xyY#t=62m03s" class="slide">
         <p>So, I've thought for a long time, if I could take a clean sheet of paper and write a new language that retains all the goodness of JavaScript ... I would not have come up with anything like Dart.
@@ -228,6 +252,7 @@
 </section>
 
 <section class="slide" id="TypeScript">
+    <div class="hidden" data-name="TypeScript" data-createyear="2012" data-transpiled="&#x2713;" data-superset="&#x2713;"></div>
     <h2 class="slideTitle">TypeScript</h2>
     <h3>&ldquo;Starts from JavaScript, Ends with JavaScript&rdquo;</h3>
     <ul>
@@ -244,6 +269,7 @@
 </section>
 
 <section class="slide" id="Objective-J">
+    <div class="hidden" data-name="Objective-J" data-createyear="2008" data-transpiled="&#x2713;" data-superset="&#x2713;"></div>
     <h2 class="slideTitle">Objective-J</h2>
     <ul>
         <li class="slide">Part of the open-source Cappuccino framework from
@@ -259,6 +285,7 @@
 </section>
 
 <section class="slide" id="asm.js">
+    <div class="hidden" data-name="asm.js" data-createyear="2012" data-subset="&#x2713;"></div>
     <h2 class="slideTitle">asm.js</h2>
     <img src="http://i.imgur.com/1yoy1Fal.png"
         alt="Asm.js Compilation & Execution Pipeline" />
@@ -276,6 +303,7 @@
 </section>
 
 <section class="slide" id="NaCl">
+    <div class="hidden" data-name="NaCl" data-createyear="2008" data-plugin="&#x2713;"></div>
     <h2><span class="slideTitle">NaCl</span> (Google Native Client)</h2>
     <ul>
         <li class="slide">Sandboxing x86(-64)/ARM code using fault isolation</li>
@@ -297,6 +325,10 @@
         <li>Existing languages (Ruby, Python, Perl, Java, Scala, C#, Lisp, Haskell, Smalltalk, C/C++, BASIC, Pascal, Go, Logo, Lua, MIPS, Erlang, Rebol, SML)</li>
         <li>Tools for Compiler Writers</li>
     </ul>
+</section>
+
+<section class="slide" id="summaryMatrix">
+    <h2>Summary</h2>
 </section>
 
 <section class="slide" id="Fin">
@@ -370,6 +402,39 @@
                     toc.append(li);
                 });
                 $("#overview").append(toc);
+
+                var summary = $("<table>");
+                var cols = ['name', 'createyear', 'subset', 'superset', 'transpiled', 'vm'];
+                $('.hidden[data-name]').each(function() {
+                    var data = $(this).data();
+                    $.each($(this).data(), function(key, value) {
+                        if(cols.indexOf(key) < 0) {
+                            cols.push(key);
+                        }
+                    });
+                }).each(function() {
+                    var row = $("<tr>");
+                    var $this = $(this);
+                    $.each(cols, function(index, value) {
+                        row.append($("<td>").text($this.data(value)));
+                    });
+                    summary.append(row);
+                });
+                var head = $("<tr>");
+                var readable = {
+                    'name': 'Name',
+                    'createyear': 'Created',
+                    'subset': String.fromCharCode(8834) + 'JS',
+                    'superset': String.fromCharCode(8835) + 'JS',
+                    'transpiled': 'Transpiled',
+                    'vm': 'Built-in',
+                    'plugin': 'Plugin'
+                };
+                $.each(cols, function(index, value) {
+                    head.append($("<th>").text(readable[value] || value));
+                });
+                summary.prepend(head);
+                $("#summaryMatrix").append(summary);
 
                 var options = {
                     countNested: false
